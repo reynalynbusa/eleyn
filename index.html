@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Birthday Surprise ♡</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff5f7;
+    color: #805c68;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 430px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 25px 22px;
+}
+
+/* GREETING */
+
+#home {
+    min-height: 95svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fade 1.3s ease;
+}
+
+.top-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #d18ca1;
+    margin-bottom: 30px;
+}
+
+.flower {
+    font-size: 40px;
+    color: #e6a2b5;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 49px;
+    line-height: 1.15;
+    font-weight: normal;
+    color: #b86f89;
+}
+
+h1 span {
+    font-style: italic;
+    color: #df9bad;
+}
+
+.intro {
+    max-width: 280px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 2;
+    color: #997984;
+    margin: 25px 0 35px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+}
+
+.main-btn {
+    background: #e7a4b7;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 15px #e7a4b755;
+}
+
+.main-btn:hover {
+    background: #d987a2;
+    transform: translateY(-3px);
+}
+
+.scroll {
+    margin-top: 55px;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #c99aa8;
+}
+
+/* MEMORY PAGE */
+
+#memories {
+    display: none;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    animation: fade 1s ease;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.heading .label {
+    font-family: Arial, sans-serif;
+    letter-spacing: 4px;
+    font-size: 10px;
+    color: #d18ca1;
+    margin-bottom: 15px;
+}
+
+.heading h2 {
+    font-size: 34px;
+    font-weight: normal;
+    color: #b86f89;
+}
+
+.heading p {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #a78b94;
+    margin-top: 12px;
+}
+
+/* CLICKABLE PHOTO CARDS */
+
+.photo-card {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 20px #dba7b522;
+}
+
+.photo-button {
+    width: 100%;
+    background: #fce8ee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    min-height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-button img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.hidden-cover {
+    position: absolute;
+    inset: 0;
+    background: #f6dce5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    transition: opacity 0.6s ease;
+}
+
+.hidden-cover .icon {
+    font-size: 42px;
+}
+
+.hidden-cover p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #b86f89;
+}
+
+.photo-button.opened .hidden-cover {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.caption {
+    text-align: center;
+    font-size: 13px;
+    font-style: italic;
+    color: #a47785;
+    padding: 15px 5px 5px;
+}
+
+.hint {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #c49ba7;
+    margin-top: 25px;
+}
+
+/* FINAL LETTER */
+
+#letter {
+    display: none;
+    min-height: 90svh;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fade 1s ease;
+}
+
+.letter-box {
+    background: white;
+    border: 1px solid #f4d6df;
+    border-radius: 15px;
+    padding: 35px 25px;
+    box-shadow: 0 5px 25px #dba7b522;
+}
+
+.letter-box .heart {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.letter-box h2 {
+    font-size: 32px;
+    font-weight: normal;
+    color: #bd7890;
+    margin-bottom: 22px;
+}
+
+.letter-box p {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 2;
+    color: #987e87;
+}
+
+.signature {
+    font-style: italic;
+    color: #d18ca1;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.back-btn {
+    background: transparent;
+    color: #bf8295;
+    border: 1px solid #e7b6c5;
+    border-radius: 25px;
+    padding: 12px 24px;
+    margin-top: 25px;
+}
+
+/* ANIMATION */
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- FIRST PAGE: GREETINGS -->
+
+    <section id="home">
+
+        <div class="flower">♡</div>
+
+      
+        <h1>
+            Happy<br>
+            <span>Birthday!</span>
+        </h1>
+
+        <p class="intro">
+            I hope this little gift will make u happy :))
+        </p>
+
+        <button class="main-btn" onclick="showMemories()">
+            OPEN YOUR SURPRISE ♡
+        </button>
+
+        <div class="scroll">
+            FROM, ELEYN
+        </div>
+
+    </section>
+
+
+    <!-- SECOND PAGE: CLICK TO REVEAL PHOTOS -->
+
+    <section id="memories">
+
+        <div class="heading">
+
+            <div class="label">OUR LITTLE CORNER</div>
+
+            <h2>Remember When? ♡</h2>
+
+            <p>
+                Every picture holds a little story.
+                Tap each one to reveal it.
+            </p>
+
+        </div>
+
+
+        <!-- PHOTO 1 -->
+        <div class="photo-card">
+
+            <button class="photo-button"
+                onclick="reveal(this)">
+
+                <img src="PIC3.jpg" alt="Memory 1">
+
+                <div class="hidden-cover">
+                    <div class="icon">♡</div>
+                    <p>TAP TO OPEN</p>
+                </div>
+
+            </button>
+
+             <div class="caption">
+                cutie
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+        <div class="photo-card">
+
+            <button class="photo-button"
+                onclick="reveal(this)">
+
+                <img src="PIC2.jpg" alt="Memory 2">
+
+                <div class="hidden-cover">
+                    <div class="icon">✿</div>
+                    <p>TAP TO OPEN</p>
+                </div>
+
+            </button>
+
+            <div class="caption">
+                ay wow photoshoot
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+        <div class="photo-card">
+
+            <button class="photo-button"
+                onclick="reveal(this)">
+
+                <img src="PIC1.jpg" alt="Memory 3">
+
+                <div class="hidden-cover">
+                    <div class="icon">♡</div>
+                    <p>TAP TO OPEN</p>
+                </div>
+
+            </button>
+
+            <div class="caption">
+                ganda natin here
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+        <div class="photo-card">
+
+            <button class="photo-button"
+                onclick="reveal(this)">
+
+                <img src="PIC4.jpg" alt="Memory 4">
+
+                <div class="hidden-cover">
+                    <div class="icon">🎀</div>
+                    <p>TAP TO OPEN</p>
+                </div>
+
+            </button>
+
+            <div class="caption">
+                gandits talaga
+            </div>
+
+        </div>
+
+
+        <p class="hint">
+            WALA NEW PICS HUHU, GALA NA US
+        </p>
+
+        <div style="text-align:center; margin-top:25px;">
+
+            <button class="main-btn"
+                onclick="showLetter()">
+                READ YOUR LITTLE LETTER ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- THIRD PAGE: FINAL LETTER -->
+
+    <section id="letter">
+
+        <div class="letter-box">
+
+            <div class="heart">💗</div>
+
+            <h2>A Little Note</h2>
+
+            <p>
+                Happiest Birthday, My Precious!
+                <br><br>
+
+                I'm so proud of everything you've accomplished and of the
+                person you've become. Thank you for showing me what a 
+                best friend truly is.
+                <br><br>
+
+               Yk that i'll always be here for u & whatever happens,
+               you'll always have me. love you!
+                <br><br>
+            </p>
+
+            <div class="signature">
+                With love, always ♡
+            </div>
+
+        </div>
+
+        <button class="back-btn" onclick="goHome()">
+            BACK TO THE BEGINNING
+        </button>
+
+    </section>
+
+</div>
+
+
+<script>
+
+function showMemories() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("letter").style.display = "none";
+    document.getElementById("memories").style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+function reveal(button) {
+    button.classList.toggle("opened");
+}
+
+function showLetter() {
+    document.getElementById("memories").style.display = "none";
+    document.getElementById("letter").style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+function goHome() {
+    document.getElementById("letter").style.display = "none";
+    document.getElementById("memories").style.display = "none";
+    document.getElementById("home").style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+</script>
+
+</body>
+</html>
